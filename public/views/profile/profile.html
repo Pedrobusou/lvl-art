@@ -1,0 +1,72 @@
+<h1>profile</h1>
+
+{{currentUser}}
+
+<div class="container">
+  <h1>update profile</h1>
+  <div class="row">
+    <div class="col-md-5">
+      <input ng-model="currentUser.username" class="form-control" placeholder="username"/><br/>
+      <input ng-model="currentUser.password" class="form-control" type="password" placeholder="password"/><br/>
+      <input ng-model="currentUser.firstName" class="form-control" placeholder="firstname"/><br/>
+      <input ng-model="currentUser.lastName" class="form-control" placeholder="lastname"/><br/>
+      <input ng-model="currentUser.email" class="form-control" placeholder="email" type="email"/><br/>
+      <input ng-model="currentUser.date_of_birthday" class="form-control" placeholder="date of birthday" type="date"/><br/>
+      <input ng-model="currentUser.role" class="form-control" placeholder="role"/><br/>
+      <input ng-model="currentUser.categories" class="form-control" placeholder="categories"/><br/>
+
+      <button class="btn btn-success" ng-click="update(currentUser)">update</button>
+      <br><br>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well">
+        <h3 class="text-primary">facebook</h3>
+        <p>
+          <strong>id</strong>: <%= user.facebook.id %><br>
+          <strong>token</strong>: <%= user.facebook.token %><br>
+          <strong>email</strong>: <%= user.facebook.email %><br>
+          <strong>name</strong>: <%= user.facebook.name %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="currentUser.role.indexOf('admin') > -1">
+      <hr>
+      <h1>admin</h1>
+      <h2>user list</h2>
+      <table class="table table-striped">
+          <tr>
+              <td>&nbsp;</td>
+              <td><input ng-model="user.username" class="form-control" placeholder="username"/></td>
+              <td><input ng-model="user.password" class="form-control" placeholder="password"/></td>
+              <td><input ng-model="user.firstName" class="form-control" placeholder="firstname"/></td>
+              <td><input ng-model="user.lastName" class="form-control" placeholder="lastname"/></td>
+              <td><input ng-model="user.email" class="form-control" placeholder="email"/></td>
+              <td><input ng-model="user.date_of_birthday" class="form-control" placeholder="birthday"/></td>
+              <td><input ng-model="user.role" class="form-control" placeholder="role"/></td>
+              <td><input ng-model="user.categories" class="form-control" placeholder="categories"/></td>
+              <td><button ng-click="add(user)">&plus;</button>
+              <td><button ng-click="update(user)">&check;</button>
+          </tr>
+
+          </tr>
+          <tr ng-repeat="user in users">
+              <td>{{user._id}}</td>
+              <td>{{user.username}}</td>
+              <td>&nbsp;</td>
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.date_of_birthday}}</td>
+              <td>{{user.role}}</td>
+              <td>{{user.categories}}</td>
+              <td><button ng-click="remove(user)">X</button>
+              <td><button ng-click="select(user)">...</button>
+          </tr>
+      </table>
+  </div>
+</div>

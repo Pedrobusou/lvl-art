@@ -1,0 +1,11 @@
+.header-carousel {
+  background: #f6b037;
+  width: 100%;
+  height: 40px;
+}
+
+.header-carousel h4 {
+  padding: 10px;
+  margin-left: 5px;
+  color: white;
+}
